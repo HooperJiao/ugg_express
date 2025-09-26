@@ -15,6 +15,9 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
 
+payslip:
+  save-dir: /Users/hooper/Documents/Adelaide/work/UGG/ugg_express_payslip
+
 logging:
   level:
     org.springframework.web: DEBUG
