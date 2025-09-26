@@ -42,8 +42,8 @@ public class SqlCodeGenerator {
                 .strategyConfig(builder -> {
                     builder
                             //.addInclude(tables)               // 所有ugg_开头的表
-                            .addInclude("ugg_payslip")               // 指定表
-                            //.addInclude("ugg_user")
+                            //.addInclude("ugg_payslip")               // 指定表
+                            .addInclude("ugg_user")
                             .addTablePrefix("ugg_")           // 去掉表名前缀
                             .entityBuilder()
                             .enableLombok()
@@ -53,8 +53,8 @@ public class SqlCodeGenerator {
                             .addTableFills(getCommonFills())
                             .build();
 
-                    builder.controllerBuilder().enableFileOverride();
-                    builder.serviceBuilder().enableFileOverride();
+                    //builder.controllerBuilder().enableFileOverride();
+                    //builder.serviceBuilder().enableFileOverride();
                     builder.mapperBuilder().enableFileOverride();
                 })
                 .templateEngine(new VelocityTemplateEngine())
@@ -85,8 +85,8 @@ public class SqlCodeGenerator {
     // 封装公共字段填充策略
     public static List<IFill> getCommonFills() {
         List<IFill> fills = new ArrayList<>();
-        fills.add(new Column("created_time", FieldFill.INSERT));
-        fills.add(new Column("updated_time", FieldFill.INSERT_UPDATE));
+        fills.add(new Column("create_time", FieldFill.INSERT));
+        fills.add(new Column("update_time", FieldFill.INSERT_UPDATE));
         return fills;
     }
 }

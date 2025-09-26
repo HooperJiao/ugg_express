@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -23,11 +24,18 @@ import java.io.File;
 @Controller
 @RequestMapping("/ugg/payslip")
 public class PayslipController {
+
+    public PayslipController() {
+        System.out.println(">>>> PayslipController 加载成功");
+    }
+
     @Autowired
-    private IPayslipService PayslipService;
+    private IPayslipService payslipService;
 
     @PostMapping("/upload")
+    @ResponseBody
     public Result<?> uploadPayslip(@RequestParam("file") MultipartFile file) {
+        System.out.println("成功访问uploadPayslip方法");
         // 步骤 1：保存到临时目录
         File tempFile = null;
         try {
@@ -35,13 +43,13 @@ public class PayslipController {
             file.transferTo(tempFile);  // 保存上传文件到临时路径
 
             // 步骤 2：Java 调用 Python OCR/PDF 解析脚本
-            Payslip Payslip = PayslipService.parseAndSaveFromPDF(tempFile.getAbsolutePath());
+            Payslip payslip = payslipService.parseAndSaveFromPDF(tempFile.getAbsolutePath());
 
             // 打印或处理返回结果
-            System.out.println(Payslip.toString());
+            System.out.println(payslip.toString());
 
             // 步骤 3：返回结果（后续可插入数据库等）
-            return Result.success(Payslip);
+            return Result.success(payslip);
         } catch (Exception e) {
             throw new RuntimeException("解析工资单失败：" + e.getMessage(), e);
         } finally {

@@ -74,7 +74,8 @@ public class ${entity} {
     @TableField("${field.annotationColumnName}")
 #end
 #if(${field.propertyType} == "LocalDate")
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 #end
 #if(${field.versionField})
     @Version

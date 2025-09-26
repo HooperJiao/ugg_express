@@ -65,7 +65,7 @@ public class PayslipServiceImpl extends ServiceImpl<PayslipMapper, Payslip> impl
 
         Payslip Payslip = objectMapper.readValue(jsonLine, Payslip.class);
         User user = userMapper.selectOne(
-                Wrappers.<User>lambdaQuery().eq(User::getRealName, Payslip.getReferenceName())
+                Wrappers.<User>lambdaQuery().eq(User::getRealName, Payslip.getRealName())
         );
         if (user == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "请先注册用户信息");

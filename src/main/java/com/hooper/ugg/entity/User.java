@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Hooper
- * @since 2025-09-24
+ * @since 2025-09-25
  */
 @Data
 @TableName("ugg_user")
