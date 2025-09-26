@@ -1,9 +1,6 @@
 package com.hooper.ugg.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -19,19 +16,21 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Hooper
- * @since 2025-09-24
+ * @since 2025-09-26
  */
 @Data
 @TableName("ugg_payslip")
-@Schema(name = "Payslip", description = "薪资表")
+@Schema(name = "Payslip", description = "")
 public class Payslip extends UggBase {
 
     private static final long serialVersionUID = 1L;
 
-
     @Schema(description = "薪资编号")
-    @TableId("payslip_id")
+    @TableId(value = "payslip_id", type = IdType.ASSIGN_UUID)
     private String payslipId;
+
+    @Schema(description = "工资单序号")
+    private Integer payslipNumber;
 
     @Schema(description = "用户编号_外键")
     private String uggUserId;
@@ -146,5 +145,8 @@ public class Payslip extends UggBase {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDateTime updateTime;
+
+
+
 
 }

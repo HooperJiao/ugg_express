@@ -42,8 +42,8 @@ public class SqlCodeGenerator {
                 .strategyConfig(builder -> {
                     builder
                             //.addInclude(tables)               // 所有ugg_开头的表
-                            //.addInclude("ugg_payslip")               // 指定表
-                            .addInclude("ugg_user")
+                            .addInclude("ugg_payslip")               // 指定表
+                            //.addInclude("ugg_user")
                             .addTablePrefix("ugg_")           // 去掉表名前缀
                             .entityBuilder()
                             .enableLombok()

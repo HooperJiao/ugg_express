@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author Hooper
- * @since 2025-09-24
+ * @since 2025-09-26
  */
 public interface PayslipMapper extends BaseMapper<Payslip> {
 

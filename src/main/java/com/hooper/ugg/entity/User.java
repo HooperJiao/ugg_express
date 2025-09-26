@@ -1,9 +1,6 @@
 package com.hooper.ugg.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -24,8 +21,7 @@ public class User extends UggBase {
 
     private static final long serialVersionUID = 1L;
 
-
-    @TableId("user_id")
+    @TableId(value = "user_id", type = IdType.ASSIGN_UUID)
     private String userId;
 
     private String userCode;
