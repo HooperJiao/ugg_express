@@ -11,7 +11,6 @@ import com.hooper.ugg.entity.User;
 import com.hooper.ugg.mapper.PayslipMapper;
 import com.hooper.ugg.mapper.UserMapper;
 import com.hooper.ugg.service.IPayslipService;
-import com.hooper.ugg.util.StringUtil;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +21,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -42,6 +43,9 @@ public class PayslipServiceImpl extends ServiceImpl<PayslipMapper, Payslip> impl
 
     @Value("${payslip.save-dir}")
     private String payslipSaveDir;
+
+    @Value("${payslip.file-extension}")
+    private String fileExtension;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -87,12 +91,9 @@ public class PayslipServiceImpl extends ServiceImpl<PayslipMapper, Payslip> impl
 
         // 填充工资表属性
         payslip.setUggUserId(user.getUserId());
-        String fileName = StringUtil.buildPayslipFileName(
-                user.getRealName(),
-                payslip.getPayPeriodStart().toString(),
-                payslip.getPayPeriodEnd().toString()
-        );
 
+        // 文件名
+        String fileName = buildPayslipFileName(user.getRealName(), payslip.getPayPeriodStart(), payslip.getPayPeriodEnd());
         payslip.setFileName(fileName);
 
         //保存文件
@@ -101,9 +102,13 @@ public class PayslipServiceImpl extends ServiceImpl<PayslipMapper, Payslip> impl
             targetDir.mkdirs();
         }
 
-        File finalFile = new File(targetDir, fileName);
+
+        // 构造目标路径：加后缀
+        File finalFile = new File(payslipSaveDir, fileName + fileExtension);
         FileUtils.copyFile(new File(pdfPath), finalFile);
-        payslip.setFilePath(finalFile.getAbsolutePath());
+
+        // 存储相对路径
+        payslip.setFilePath(fileName + fileExtension);
 
         // 插入数据库
         int insert = payslipMapper.insert(payslip);
@@ -148,6 +153,13 @@ public class PayslipServiceImpl extends ServiceImpl<PayslipMapper, Payslip> impl
         }
 
         payslip.setPayslipNumber(insertIndex + 1);
+    }
+
+    public static String buildPayslipFileName(String name, LocalDate start, LocalDate end) {
+        String year = String.valueOf(start.getYear());
+        String startStr = start.format(DateTimeFormatter.ofPattern("MM-dd"));
+        String endStr = end.format(DateTimeFormatter.ofPattern("MM-dd"));
+        return String.format("[%s] [%s] %s ~ %s", name, year, startStr, endStr);
     }
 
     private String getJsonLine(String pdfPath) throws IOException {

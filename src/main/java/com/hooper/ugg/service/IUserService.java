@@ -1,5 +1,6 @@
 package com.hooper.ugg.service;
 
+import com.hooper.ugg.common.Result;
 import com.hooper.ugg.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2025-09-25
  */
 public interface IUserService extends IService<User> {
+
+    public Result<?> addUser(User user);
 
 }

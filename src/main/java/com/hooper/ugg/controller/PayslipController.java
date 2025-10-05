@@ -14,20 +14,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 
 /**
- * <p>
- * 前端控制器
- * </p>
- *
  * @author Hooper
  * @since 2025-09-24
  */
 @Controller
 @RequestMapping("/ugg/payslip")
 public class PayslipController {
-
-    public PayslipController() {
-        System.out.println(">>>> PayslipController 加载成功");
-    }
 
     @Autowired
     private IPayslipService payslipService;
