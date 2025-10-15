@@ -17,6 +17,14 @@ spring:
 
 payslip:
   save-dir: /Users/hooper/Documents/Adelaide/work/UGG/ugg_express_payslip
+  file-extension: .pdf
+
+lightspeed:
+  login-url: https://zeone.retail.lightspeed.app/api/1.0/signin
+  data-url: https://zeone.retail.lightspeed.app/api/1.0/your-data-url
+  username: Hooper Jiao
+  password: ankui.539
+  domain-prefix: zeone
 
 logging:
   level:
