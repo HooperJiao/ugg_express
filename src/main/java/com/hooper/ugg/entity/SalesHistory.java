@@ -17,27 +17,16 @@ import java.time.LocalDateTime;
  * @since 2025-10-15
  */
 @Data
-@TableName("ugg_user")
-@Schema(name = "User", description = "")
-public class User extends UggBase {
+@TableName("ugg_sales_history")
+@Schema(name = "SalesHistory", description = "")
+public class SalesHistory extends UggBase {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "user_id", type = IdType.ASSIGN_UUID)
-    private String userId;
+    @TableId(value = "sales_history_id", type = IdType.ASSIGN_UUID)
+    private String salesHistoryId;
 
-    @Schema(description = "1. 员工，2.普通用户")
-    private Integer roleNo;
-
-    private String userCode;
-
-    private String userName;
-
-    private String realName;
-
-    private String userPhone;
-
-    private String userEmail;
+    private String staffId;
 
     @Schema(description = "创建时间")
     @TableField(fill = FieldFill.INSERT)

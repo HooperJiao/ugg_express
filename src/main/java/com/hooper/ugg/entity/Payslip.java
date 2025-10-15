@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Hooper
- * @since 2025-09-26
+ * @since 2025-10-15
  */
 @Data
 @TableName("ugg_payslip")
@@ -32,8 +32,8 @@ public class Payslip extends UggBase {
     @Schema(description = "工资单序号")
     private Integer payslipNumber;
 
-    @Schema(description = "用户编号_外键")
-    private String uggUserId;
+    @Schema(description = "员工编号_外键")
+    private String staffId;
 
     @Schema(description = "文件名称")
     private String fileName;

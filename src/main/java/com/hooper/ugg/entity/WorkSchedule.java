@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -17,27 +18,24 @@ import java.time.LocalDateTime;
  * @since 2025-10-15
  */
 @Data
-@TableName("ugg_user")
-@Schema(name = "User", description = "")
-public class User extends UggBase {
+@TableName("ugg_work_schedule")
+@Schema(name = "WorkSchedule", description = "")
+public class WorkSchedule extends UggBase {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "user_id", type = IdType.ASSIGN_UUID)
-    private String userId;
+    @TableId(value = "work_schedule_id", type = IdType.ASSIGN_UUID)
+    private String workScheduleId;
 
-    @Schema(description = "1. 员工，2.普通用户")
-    private Integer roleNo;
+    private String staffId;
 
-    private String userCode;
+    private BigDecimal hour;
 
-    private String userName;
+    private LocalDateTime startTime;
 
-    private String realName;
+    private LocalDateTime endTime;
 
-    private String userPhone;
-
-    private String userEmail;
+    private String weekday;
 
     @Schema(description = "创建时间")
     @TableField(fill = FieldFill.INSERT)
