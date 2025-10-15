@@ -23,6 +23,12 @@ public class Result<T> {
     }
 
     /**
+     * 成功，无返回数据
+     */
+    public static <T> Result<T> success() {
+        return new Result(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage(), null);
+    }
+    /**
      * 成功
      * @param data 返回数据
      */

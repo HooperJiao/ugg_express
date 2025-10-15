@@ -28,6 +28,9 @@ public class Staff extends UggBase {
 
     private String userId;
 
+    @Schema(description = "0.注销 1.正常启用")
+    private Integer staffStatus;
+
     private String realName;
 
     private String preferName;

@@ -90,7 +90,7 @@ public class PayslipServiceImpl extends ServiceImpl<PayslipMapper, Payslip> impl
         assignPayslipNumberWithReordering(payslip);
 
         // 填充工资表属性
-        payslip.setUggUserId(user.getUserId());
+        //payslip.setUggUserId(user.getUserId());
 
         // 文件名
         String fileName = buildPayslipFileName(user.getRealName(), payslip.getPayPeriodStart(), payslip.getPayPeriodEnd());

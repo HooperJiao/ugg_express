@@ -39,6 +39,9 @@ public class User extends UggBase {
 
     private String userEmail;
 
+    @Schema(description = "0.注销 1.正常启用，2.冻结")
+    private Integer userStatus;
+
     @Schema(description = "创建时间")
     @TableField(fill = FieldFill.INSERT)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
