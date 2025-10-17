@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author Hooper
- * @since 2025-10-15
+ * @since 2025-10-17
  */
 @Data
 @TableName("ugg_user")
@@ -29,10 +29,18 @@ public class User extends UggBase {
     @Schema(description = "1. 员工，2.普通用户")
     private Integer roleNo;
 
-    private String userCode;
+    @Schema(description = "存储UGG系统相关的唯一码")
+    private String uggCode;
+
+    @Schema(description = "用户账号，不可更改，且唯一")
+    private String accountNumber;
+
+    @Schema(description = "用户密码")
+    private String userPassword;
 
     private String userName;
 
+    @Schema(description = "真实姓名，修改需审核")
     private String realName;
 
     private String userPhone;
