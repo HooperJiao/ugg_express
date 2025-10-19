@@ -16,6 +16,7 @@ import java.util.List;
  */
 public interface IUserService extends IService<User> {
 
+
     /**
      * 添加新用户
      *
@@ -23,6 +24,21 @@ public interface IUserService extends IService<User> {
      * @return 操作结果
      */
     Result<?> addUser(User user);
+
+    /**
+     * 用户注册
+     * @param user 用户实体，包含用户名、密码等
+     * @return 操作结果
+     */
+    Result<?> register(User user);
+
+    /**
+     * 用户登录
+     * @param accountNumber, password 账户 & 密码
+     * @return 操作结果（成功时返回用户信息）
+     */
+    Result<?> login(String accountNumber, String password);
+
 
     /**
      * 查询所有未注销正常的用户（user_status != 0）

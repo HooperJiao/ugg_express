@@ -3,7 +3,7 @@ package com.hooper.ugg.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hooper.ugg.common.ResponseCode;
+import com.hooper.ugg.ugg_enum.ResponseCode;
 import com.hooper.ugg.common.Result;
 import com.hooper.ugg.entity.Staff;
 import com.hooper.ugg.mapper.StaffMapper;

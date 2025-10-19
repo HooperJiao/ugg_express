@@ -5,10 +5,7 @@ import com.hooper.ugg.entity.User;
 import com.hooper.ugg.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -28,5 +25,14 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    @PostMapping("/register")
+    public Result<?> register(@RequestBody User user) {
+        return userService.register(user);
+    }
+
+    @PostMapping("/login")
+    public Result<?> login(@RequestBody User user) {
+        return userService.login(user.getAccountNumber(), user.getUserPassword());
+    }
 
 }

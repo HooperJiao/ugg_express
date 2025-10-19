@@ -1,5 +1,6 @@
 package com.hooper.ugg.common;
 
+import com.hooper.ugg.ugg_enum.ResponseCode;
 import lombok.Data;
 
 @Data

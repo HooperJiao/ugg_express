@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hooper.ugg.common.ResponseCode;
+import com.hooper.ugg.ugg_enum.ResponseCode;
 import com.hooper.ugg.common.Result;
 import com.hooper.ugg.entity.Payslip;
 import com.hooper.ugg.entity.User;

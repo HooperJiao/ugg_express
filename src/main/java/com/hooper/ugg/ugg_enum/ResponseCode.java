@@ -1,4 +1,4 @@
-package com.hooper.ugg.common;
+package com.hooper.ugg.ugg_enum;
 
 import lombok.Getter;
 
@@ -7,10 +7,15 @@ public enum ResponseCode {
 
     SUCCESS(200, "success"),
     PARAM_ERROR(400, "parameter error"),
+    PARAMS_MISSING(401, "parameter missing"),
+    NOT_FOUND(404, "not found error"),
     FAIL(500, "fail"),
     INSERT_FAILED(5001, "insert fail"),
     UPDATE_FAILED(5002, "update fail"),
     DELETE_FAILED(5003, "delete fail"),
+
+    USERNAME_EXISTS(4003, "用户名已存在"),
+    LOGIN_FAILED(4004, "用户名或密码错误"),
 
     USER_NOT_REGISTERED(1001, "请先注册用户信息"),
     ALREADY_UPLOADED(1004, "该工资单已上传"),

@@ -1,6 +1,6 @@
 package com.hooper.ugg.controller;
 
-import com.hooper.ugg.common.ResponseCode;
+import com.hooper.ugg.ugg_enum.ResponseCode;
 import com.hooper.ugg.common.Result;
 import com.hooper.ugg.service.IPayslipService;
 import org.springframework.beans.factory.annotation.Autowired;
